@@ -16,7 +16,8 @@ namespace GameStore.Persistence.Context.Configurations
             builder
                 .HasOne(p => p.ParentGenre)
                 .WithMany(p => p.Subgenres)
-                .HasForeignKey(p => p.ParentGenreId);
+                .HasForeignKey(p => p.ParentGenreId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

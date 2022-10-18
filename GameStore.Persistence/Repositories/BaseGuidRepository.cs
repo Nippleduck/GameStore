@@ -12,12 +12,9 @@ namespace GameStore.Persistence.Repositories
 
         protected readonly ApplicationDbContext context;
         
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
-            context.Set<TEntity>().Add(entity);
-            await context.SaveChangesAsync();
-
-            return entity;
+            await context.Set<TEntity>().AddAsync(entity);
         }
 
         public async Task<bool> DeleteByIdAsync(Guid id)
@@ -43,10 +40,9 @@ namespace GameStore.Persistence.Repositories
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task UpdateAsync(TEntity entity)
+        public void UpdateAsync(TEntity entity)
         {
             context.Set<TEntity>().Update(entity);
-            await context.SaveChangesAsync();
         }
     }
 }

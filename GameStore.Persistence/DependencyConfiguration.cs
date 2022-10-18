@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace GameStore.Persistence
 {
-    public static class DependecyConfiguration
+    public static class DependencyConfiguration
     {
         private const string ConnectionString = "GameStoreDb";
         

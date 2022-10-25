@@ -11,6 +11,7 @@ namespace GameStore.Persistence.Repositories
         protected BaseGuidRepository(ApplicationDbContext context) => this.context = context;
 
         protected readonly ApplicationDbContext context;
+        protected DbSet<TEntity> Entities => context.Set<TEntity>();    
         
         public async Task AddAsync(TEntity entity)
         {

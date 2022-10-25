@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\GameStore.Application\GameStore.Application.csproj" />
+    <ProjectReference Include="..\GameStore.Persistence\GameStore.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameStore.Application\GameStore.Application.csproj" />
-    <ProjectReference Include="..\GameStore.Persistence\GameStore.Persistence.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

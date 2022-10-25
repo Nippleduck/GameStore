@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using GameStore.Persistence.Identity;
 using GameStore.Persistence.Context;
+using GameStore.Persistence.UOF;
 using System.Reflection;
 
 namespace GameStore.Persistence
@@ -21,6 +22,8 @@ namespace GameStore.Persistence
             services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

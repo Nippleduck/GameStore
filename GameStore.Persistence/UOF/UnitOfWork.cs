@@ -2,7 +2,7 @@
 using GameStore.Persistence.Repositories;
 using GameStore.Persistence.Repositories.Interfaces;
 
-namespace GameStore.Persistence.UnitOfWork
+namespace GameStore.Persistence.UOF
 {
     public class UnitOfWork : IUnitOfWork
     {

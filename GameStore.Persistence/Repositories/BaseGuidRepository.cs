@@ -41,7 +41,7 @@ namespace GameStore.Persistence.Repositories
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public void UpdateAsync(TEntity entity)
+        public void Update(TEntity entity)
         {
             context.Set<TEntity>().Update(entity);
         }

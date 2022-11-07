@@ -15,35 +15,35 @@ namespace GameStore.Persistence.Repositories
         
         public async Task AddAsync(TEntity entity)
         {
-            await context.Set<TEntity>().AddAsync(entity);
+            await Entities.AddAsync(entity);
         }
 
         public async Task<bool> DeleteByIdAsync(Guid id)
         {
-            var entity = await context.Set<TEntity>().FindAsync(id);
+            var entity = await Entities.FindAsync(id);
 
             if (entity is null) return false;
 
-            context.Set<TEntity>().Remove(entity);
+            Entities.Remove(entity);
 
             return true;
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await context.Set<TEntity>()
+            return await Entities
                 .AsNoTracking()
                 .ToListAsync();
         }
 
         public async Task<TEntity?> GetByIdAsync(Guid id)
         {
-            return await context.Set<TEntity>().FindAsync(id);
+            return await Entities.FindAsync(id);
         }
 
         public void Update(TEntity entity)
         {
-            context.Set<TEntity>().Update(entity);
+            Entities.Update(entity);
         }
     }
 }

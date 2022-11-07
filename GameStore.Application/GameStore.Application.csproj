@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Games\Requests\" />
-    <Folder Include="Models\Games\DTOs\" />
     <Folder Include="Models\Games\Validators\" />
   </ItemGroup>
 

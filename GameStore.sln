@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore.Domain", "GameSto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore.Application", "GameStore.Application\GameStore.Application.csproj", "{EDDBCB2C-0C7D-4D2A-9129-CE985F2FF7F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Persistence", "GameStore.Persistence\GameStore.Persistence.csproj", "{5D4E7F87-9748-49E2-8BA9-A08C407523D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameStore.Persistence", "GameStore.Persistence\GameStore.Persistence.csproj", "{5D4E7F87-9748-49E2-8BA9-A08C407523D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

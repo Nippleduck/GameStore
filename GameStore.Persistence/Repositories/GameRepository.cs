@@ -2,6 +2,8 @@
 using GameStore.Persistence.Context;
 using GameStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using GameStore.Common.Filtering.Filters;
+using GameStore.Common.Filtering.Handlers;
 
 namespace GameStore.Persistence.Repositories
 {
@@ -23,6 +25,15 @@ namespace GameStore.Persistence.Repositories
             return await Entities
                 .AsNoTracking()
                 .Include(game => game.Genres)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Game>> GetAllWithFilter(GameFilter filter)
+        {
+            return await Entities
+                .AsNoTracking()
+                .Include(game => game.Genres)
+                .Filter(filter)
                 .ToListAsync();
         }
 

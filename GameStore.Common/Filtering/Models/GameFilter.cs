@@ -1,4 +1,4 @@
-﻿namespace GameStore.Common.Filtering.Filters
+﻿namespace GameStore.Common.Filtering.Models
 {
     public class GameFilter
     {

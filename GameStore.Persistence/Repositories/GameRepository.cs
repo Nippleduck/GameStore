@@ -1,9 +1,9 @@
 ﻿using GameStore.Persistence.Repositories.Interfaces;
+using GameStore.Persistence.QueryFilters;
 using GameStore.Persistence.Context;
+using GameStore.Common.Filtering.Models;
 using GameStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using GameStore.Common.Filtering.Filters;
-using GameStore.Common.Filtering.Handlers;
 
 namespace GameStore.Persistence.Repositories
 {

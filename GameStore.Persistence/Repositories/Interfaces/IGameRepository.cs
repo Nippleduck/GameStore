@@ -1,4 +1,4 @@
-﻿using GameStore.Common.Filtering.Filters;
+﻿using GameStore.Common.Filtering.Models;
 using GameStore.Domain.Entities;
 
 namespace GameStore.Persistence.Repositories.Interfaces

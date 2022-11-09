@@ -1,9 +1,9 @@
-﻿using GameStore.Common.Filtering.Filters;
+﻿using GameStore.Common.Filtering.Models;
 using GameStore.Domain.Entities;
 
-namespace GameStore.Common.Filtering.Handlers
+namespace GameStore.Persistence.QueryFilters
 {
-    public static class GameFilterHandlerExtension
+    internal static class GameFilteringExtension
     {
         public static IQueryable<Game> Filter(this IQueryable<Game> source, GameFilter filter)
         {

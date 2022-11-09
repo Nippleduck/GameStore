@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using GameStore.Application.Interfaces;
+﻿using GameStore.Application.Interfaces;
 using GameStore.Application.Models.Games.DTOs;
-using GameStore.Common.Filtering.Filters;
+using GameStore.Common.Filtering.Models;
 using GameStore.Persistence.UOF;
+using AutoMapper;
 
 namespace GameStore.Application.Services
 {

@@ -1,5 +1,5 @@
 ﻿using GameStore.Application.Models.Games.DTOs;
-using GameStore.Common.Filtering.Filters;
+using GameStore.Common.Filtering.Models;
 
 namespace GameStore.Application.Interfaces
 {

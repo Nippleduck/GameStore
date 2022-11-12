@@ -1,4 +1,5 @@
 ﻿using GameStore.Application.Models.Games.DTOs;
+using GameStore.Application.Models.Games.Requests;
 using GameStore.Domain.Entities;
 using AutoMapper;
 
@@ -9,6 +10,8 @@ namespace GameStore.Application.Mappings
         public GamesProfile()
         {
             CreateMap<Game, GameDTO>();
+
+            CreateMap<SetGameDetailsRequest, Game>();
         }
     }
 }

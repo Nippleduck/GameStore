@@ -6,6 +6,6 @@ namespace GameStore.Persistence.UOF
     {
         IGameRepository Games { get; }
         IGenreRepository Genres { get; }
-        Task SaveChanges();
+        Task SaveChangesAsync();
     }
 }

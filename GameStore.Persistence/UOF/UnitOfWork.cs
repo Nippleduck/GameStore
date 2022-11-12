@@ -16,6 +16,6 @@ namespace GameStore.Persistence.UOF
         public IGameRepository Games => games ??= new GameRepository(context);
         public IGenreRepository Genres => genres ??= new GenreRepository(context);
 
-        public async Task SaveChanges() => await context.SaveChangesAsync();
+        public async Task SaveChangesAsync() => await context.SaveChangesAsync();
     }
 }

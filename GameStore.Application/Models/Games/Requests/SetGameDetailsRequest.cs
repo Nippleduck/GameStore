@@ -1,6 +1,6 @@
 ﻿namespace GameStore.Application.Models.Games.Requests
 {
-    public class AddGameRequest
+    public class SetGameDetailsRequest
     {
         public string? Name { get; set; }
         public string? Description { get; set; }

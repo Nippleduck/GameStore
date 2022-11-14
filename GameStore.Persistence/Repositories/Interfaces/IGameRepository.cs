@@ -5,9 +5,9 @@ namespace GameStore.Persistence.Repositories.Interfaces
 {
     public interface IGameRepository : IGuidRepository<Game> 
     {
-        Task<IEnumerable<Game>> GetAllWithFilter(GameFilter filter);
-        Task<IEnumerable<Game>> GetAllWithDetails();
-        Task<IEnumerable<Game>> GetAllByGenreId(Guid genreId);
-        Task<Game?> GetByIdWithDetails(Guid id);
+        Task<IEnumerable<Game>> GetAllWithFilterAsync(GameFilter filter);
+        Task<IEnumerable<Game>> GetAllWithDetailsAsync();
+        Task<IEnumerable<Game>> GetAllByGenreIdAsync(Guid genreId);
+        Task<Game?> GetByIdWithDetailsAsync(Guid id);
     }
 }

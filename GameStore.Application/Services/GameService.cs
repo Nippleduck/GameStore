@@ -29,7 +29,7 @@ namespace GameStore.Application.Services
 
         public async Task<GameDTO> GetByIdAsync(Guid id)
         {
-            var game = await uof.Games.GetByIdAsync(id);
+            var game = await uof.Games.GetByIdWithDetailsAsync(id);
 
             if (game is null) throw new NotFoundException(nameof(game), id);
 
@@ -38,7 +38,7 @@ namespace GameStore.Application.Services
 
         public async Task<IEnumerable<GameDTO>> GetForSaleAsync(GameFilter filter)
         {
-            var games = await uof.Games.GetAllWithFilter(filter);
+            var games = await uof.Games.GetAllWithFilterAsync(filter);
 
             if (!games.Any()) return Enumerable.Empty<GameDTO>();
             
@@ -58,7 +58,7 @@ namespace GameStore.Application.Services
         {
             if (request is null) throw new ArgumentNullException(nameof(request));
 
-            var game = await uof.Games.GetByIdAsync(id);
+            var game = await uof.Games.GetByIdWithDetailsAsync(id);
 
             if (game is null) throw new NotFoundException(nameof(game), id);
 

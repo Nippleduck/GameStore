@@ -11,7 +11,7 @@ namespace GameStore.Persistence.Repositories
     {
         public GameRepository(ApplicationDbContext context) : base(context) { }
 
-        public async Task<IEnumerable<Game>> GetAllByGenreId(Guid genreId)
+        public async Task<IEnumerable<Game>> GetAllByGenreIdAsync(Guid genreId)
         {
             return await Entities
                 .AsNoTracking()
@@ -20,7 +20,7 @@ namespace GameStore.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Game>> GetAllWithDetails()
+        public async Task<IEnumerable<Game>> GetAllWithDetailsAsync()
         {
             return await Entities
                 .AsNoTracking()
@@ -28,7 +28,7 @@ namespace GameStore.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Game>> GetAllWithFilter(GameFilter filter)
+        public async Task<IEnumerable<Game>> GetAllWithFilterAsync(GameFilter filter)
         {
             return await Entities
                 .AsNoTracking()
@@ -37,7 +37,7 @@ namespace GameStore.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Game?> GetByIdWithDetails(Guid id)
+        public async Task<Game?> GetByIdWithDetailsAsync(Guid id)
         {
             return await Entities
                 .AsNoTracking()

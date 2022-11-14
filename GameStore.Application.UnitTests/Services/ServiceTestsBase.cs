@@ -1,8 +1,4 @@
-﻿using AutoFixture;
-using AutoMapper;
-using Moq;
-using GameStore.Application.Services;
-using GameStore.Persistence.UOF;
+﻿using GameStore.Persistence.UOF;
 
 namespace GameStore.Application.UnitTests.Services
 {

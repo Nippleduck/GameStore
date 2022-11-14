@@ -1,15 +1,6 @@
-﻿using AutoFixture.Xunit2;
-using AutoFixture;
-using FluentAssertions;
-using Moq;
-using GameStore.Application.UnitTests.CustomAttributes;
-using GameStore.Application.Models.Games.Requests;
+﻿using GameStore.Application.Models.Games.Requests;
 using GameStore.Application.Models.Games.DTOs;
-using GameStore.Application.Interfaces;
-using GameStore.Application.Services;
 using GameStore.Common.Filtering.Models;
-using GameStore.Common.Exceptions;
-using GameStore.Domain.Entities;
 
 namespace GameStore.Application.UnitTests.Services
 {

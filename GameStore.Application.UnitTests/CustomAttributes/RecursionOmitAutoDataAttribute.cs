@@ -3,13 +3,13 @@ using AutoFixture.Xunit2;
 
 namespace GameStore.Application.UnitTests.CustomAttributes
 {
-    internal class RecursionAllowedAutoDataAttribute : AutoDataAttribute
+    internal class RecursionOmitAutoDataAttribute : AutoDataAttribute
     {
-        public RecursionAllowedAutoDataAttribute() 
-            : base(() => new Fixture().Customize(new RecursionAllowedCustomization())) { }
+        public RecursionOmitAutoDataAttribute() 
+            : base(() => new Fixture().Customize(new RecursionOmitCustomization())) { }
     }
 
-    internal class RecursionAllowedCustomization : ICustomization
+    internal class RecursionOmitCustomization : ICustomization
     {
         public void Customize(IFixture fixture)
         {

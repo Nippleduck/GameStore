@@ -13,7 +13,7 @@ namespace GameStore.Application.UnitTests.Services
 
         private readonly IGameService sut;
 
-        [Theory, RecursionAllowedAutoData]
+        [Theory, RecursionOmitAutoData]
         public async Task GetByIdAsync_GameExists_ShouldReturnGameDTO(Guid id, Game game)
         {
             var mapped = mapper.Map<GameDTO>(game);
@@ -34,7 +34,7 @@ namespace GameStore.Application.UnitTests.Services
             await act.Should().ThrowExactlyAsync<NotFoundException>();
         }
 
-        [Theory, RecursionAllowedAutoData]
+        [Theory, RecursionOmitAutoData]
         public async Task GetForSaleAsync_GamesExist_ShouldReturnGamesDTOsCollection
             (GameFilter filter, IEnumerable<Game> games)
         {
@@ -67,7 +67,7 @@ namespace GameStore.Application.UnitTests.Services
             await act.Should().ThrowExactlyAsync<NotFoundException>();
         }
 
-        [Theory, RecursionAllowedAutoData]
+        [Theory, RecursionOmitAutoData]
         public async Task AddAsync_ShouldPersistNewGame(ICollection<Genre> genres)
         {
             var game = fixture.Build<Game>()
@@ -93,7 +93,7 @@ namespace GameStore.Application.UnitTests.Services
             result.Should().NotBeNull().And.BeEquivalentTo(expected);
         }
 
-        [Theory, RecursionAllowedAutoData]
+        [Theory, RecursionOmitAutoData]
         public async Task AddAsync_GenreDoesNotExist_ShouldThrowNotFoundException
             (SetGameDetailsRequest request)
         {
@@ -105,7 +105,7 @@ namespace GameStore.Application.UnitTests.Services
             await act.Should().ThrowExactlyAsync<NotFoundException>();
         }
 
-        [Theory, RecursionAllowedAutoData]
+        [Theory, RecursionOmitAutoData]
         public async Task UpdateAsync_ShouldPersistChanges
             (ICollection<Genre> genres, Game game)
         {

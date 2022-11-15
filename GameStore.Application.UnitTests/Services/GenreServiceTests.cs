@@ -34,7 +34,7 @@ namespace GameStore.Application.UnitTests.Services
             result.Should().NotBeNull().And.BeEquivalentTo(expected);
         }
 
-        [Theory, RecursionAllowedAutoData]
+        [Theory, RecursionOmitAutoData]
         public async Task GetAllAsync_GenresExists_ShouldReturnGenresCollection
             (IEnumerable<Genre> genres)
         {
@@ -46,7 +46,7 @@ namespace GameStore.Application.UnitTests.Services
             result.Should().NotBeNullOrEmpty().And.BeEquivalentTo(expected);
         }
 
-        [Theory, RecursionAllowedAutoData]
+        [Theory, RecursionOmitAutoData]
         public async Task GetByIdAsync_GenreExists_ShouldReturnSearchedGenre(Genre genre)
         {
             var expected = mapper.Map<GenreDTO>(genre);

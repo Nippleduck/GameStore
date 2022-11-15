@@ -1,7 +1,4 @@
-﻿using AutoFixture;
-using AutoFixture.Xunit2;
-
-namespace GameStore.Application.UnitTests.CustomAttributes
+﻿namespace GameStore.Application.UnitTests.CustomAttributes
 {
     internal class RecursionOmitAutoDataAttribute : AutoDataAttribute
     {

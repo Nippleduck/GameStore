@@ -17,7 +17,7 @@ namespace GameStore.API.Controllers
         private readonly IGameService gameService;
 
         [HttpGet]
-        public async Task<IActionResult> GetAllWithFilter([FromQuery]GameFilter filter)
+        public async Task<IActionResult> GetAllWithFilter([FromQuery] GameFilter filter)
         {
             var result = await gameService.GetForSaleAsync(filter);
 

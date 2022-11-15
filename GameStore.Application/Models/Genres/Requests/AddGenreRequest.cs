@@ -3,6 +3,6 @@
     public class AddGenreRequest
     {
         public string? Name { get; set; }
-        public Guid ParentGenreId { get; set; }
+        public Guid ParentGenreId { get; set; } = Guid.Empty;
     }
 }

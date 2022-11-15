@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using GameStore.Application.Interfaces;
 using GameStore.Application.Models.Genres.DTOs;
+using GameStore.Application.Models.Genres.Requests;
+using GameStore.Common.Exceptions;
+using GameStore.Domain.Entities;
 using GameStore.Persistence.UOF;
 
 namespace GameStore.Application.Services
@@ -9,19 +12,34 @@ namespace GameStore.Application.Services
     {
         public GenreService(IUnitOfWork uof, IMapper mapper) : base(uof, mapper) { }
 
-        public Task<GenreDTO> AddAsync(GenreDTO genreDTO)
+        public async Task<GenreDTO> AddAsync(AddGenreRequest request)
         {
-            throw new NotImplementedException();
+            if (request is null) throw new ArgumentNullException(nameof(request));
+
+            var genre = mapper.Map<Genre>(request);
+
+            await uof.Genres.AddAsync(genre);
+            await uof.SaveChangesAsync();
+
+            return mapper.Map<GenreDTO>(genre);
         }
 
-        public Task<IEnumerable<GenreDTO>> GetAllAsync()
+        public async Task<IEnumerable<GenreDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var genres = await uof.Genres.GetAllAsync();
+
+            if (!genres.Any()) return Enumerable.Empty<GenreDTO>();
+
+            return mapper.Map<IEnumerable<GenreDTO>>(genres);
         }
 
-        public Task<GenreDTO> GetByIdAsync(Guid id)
+        public async Task<GenreDTO> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var genre = await uof.Genres.GetByIdAsync(id);
+
+            if (genre is null) throw new NotFoundException(nameof(genre), id);
+
+            return mapper.Map<GenreDTO>(genre); 
         }
     }
 }

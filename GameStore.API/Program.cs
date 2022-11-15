@@ -1,3 +1,5 @@
+using FluentValidation.AspNetCore;
+using GameStore.Application;
 using GameStore.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplication();
+builder.Services.AddFluentValidationAutoValidation();
 
 var app = builder.Build();
 

@@ -1,6 +1,4 @@
 ﻿using GameStore.Application.Models.Genres.DTOs;
-using GameStore.Domain.Entities;
-using AutoMapper;
 using GameStore.Application.Models.Genres.Requests;
 
 namespace GameStore.Application.Mappings

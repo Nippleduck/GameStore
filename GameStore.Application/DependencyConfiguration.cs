@@ -1,6 +1,4 @@
-﻿using GameStore.Application.Interfaces;
-using GameStore.Application.Services;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace GameStore.Application

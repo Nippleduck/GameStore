@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using GameStore.Persistence.UOF;
-
-namespace GameStore.Application.Services
+﻿namespace GameStore.Application.Services
 {
     public abstract class BaseService
     {

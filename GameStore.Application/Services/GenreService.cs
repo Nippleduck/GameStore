@@ -1,10 +1,5 @@
-﻿using AutoMapper;
-using GameStore.Application.Interfaces;
-using GameStore.Application.Models.Genres.DTOs;
+﻿using GameStore.Application.Models.Genres.DTOs;
 using GameStore.Application.Models.Genres.Requests;
-using GameStore.Common.Exceptions;
-using GameStore.Domain.Entities;
-using GameStore.Persistence.UOF;
 
 namespace GameStore.Application.Services
 {

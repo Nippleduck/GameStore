@@ -1,11 +1,6 @@
-﻿using GameStore.Application.Interfaces;
-using GameStore.Application.Models.Games.DTOs;
+﻿using GameStore.Application.Models.Games.DTOs;
 using GameStore.Application.Models.Games.Requests;
 using GameStore.Common.Filtering.Models;
-using GameStore.Common.Exceptions;
-using GameStore.Persistence.UOF;
-using GameStore.Domain.Entities;
-using AutoMapper;
 
 namespace GameStore.Application.Services
 {

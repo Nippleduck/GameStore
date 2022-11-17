@@ -140,5 +140,35 @@ namespace GameStore.Application.UnitTests.Services
 
             await act.Should().ThrowExactlyAsync<NotFoundException>();
         }
+
+        [Theory, AutoData]
+        public async Task UpdateImageAsync_GameDoesNotExist_ShouldThrowNotFoundException
+            (Guid id)
+        {
+            uofMock.Setup(s => s.Games.GetByIdWithDetailsAsync(It.IsAny<Guid>()).Result)
+                .Returns((Game?)null);
+
+            var act = async () => await sut.UpdateImageAsync(id, It.IsAny<Stream>(), It.IsAny<string>());
+
+            await act.Should().ThrowExactlyAsync<NotFoundException>();
+        }
+
+        [Theory, RecursionOmitAutoData]
+        public async Task UpdateImageAsync_ImageUploadedToStorage_ShouldPersistChanges
+            (string url, Game game)
+        {
+            mediaStorageMock.Setup(s => s.UploadImageAsync(
+                It.IsAny<Stream>(),
+                It.IsAny<string>(),
+                It.IsAny<string>()).Result)
+                .Returns(url);
+
+            uofMock.Setup(s => s.Games.GetByIdAsync(It.Is<Guid>(x => x == game.Id)).Result)
+                .Returns(game);
+
+            await sut.UpdateImageAsync(game.Id, It.IsAny<Stream>(), It.IsAny<string>());
+
+            uofMock.Verify(x => x.Games.Update(It.Is<Game>(x => x.ImageUrl == url)));
+        }
     }
 }

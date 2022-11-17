@@ -1,12 +1,14 @@
 ﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using GameStore.Application.External.MediaStorage;
 
 namespace GameStore.Application
 {
     public static class DependencyConfiguration
     {
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IGameService, GameService>();
             services.AddTransient<IGenreService, GenreService>();
@@ -14,6 +16,16 @@ namespace GameStore.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            var settings = configuration.GetSection(AccountSettings.SectionName);
+            services.Configure<AccountSettings>(options =>
+            {
+                options.ApiKey = settings[nameof(AccountSettings.ApiKey)];
+                options.ApiSecret = settings[nameof(AccountSettings.ApiSecret)];
+                options.Cloud = settings[nameof(AccountSettings.Cloud)];
+            });
+
+            services.AddTransient<IExternalMediaStorage, CloudinaryStorage>();
 
             return services;
         }

@@ -10,6 +10,7 @@ namespace GameStore.Application.Interfaces
         Task<GameDTO> GetByIdAsync(Guid id);
         Task<GameDTO> AddAsync(SetGameDetailsRequest request);
         Task UpdateAsync(Guid id, SetGameDetailsRequest request);
+        Task UpdateImageAsync(Guid id, Stream image, string name);
         Task DeleteByIdAsync(Guid id);
     }
 }

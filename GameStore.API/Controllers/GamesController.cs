@@ -53,5 +53,13 @@ namespace GameStore.API.Controllers
 
             return Ok();
         }
+
+        [HttpPut("{id}/image")]
+        public async Task<IActionResult> UpdateImage(Guid id, [FromForm] IFormFile image)
+        {
+            await gameService.UpdateImageAsync(id, image.OpenReadStream(), image.FileName);
+
+            return Ok();
+        }
     }
 }

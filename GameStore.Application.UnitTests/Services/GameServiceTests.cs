@@ -8,9 +8,11 @@ namespace GameStore.Application.UnitTests.Services
     {
         public GameServiceTests()
         {
-            sut = new GameService(uofMock.Object, mapper);
+            mediaStorageMock = new Mock<IExternalMediaStorage>();
+            sut = new GameService(uofMock.Object, mapper, mediaStorageMock.Object);
         }
 
+        private readonly Mock<IExternalMediaStorage> mediaStorageMock;
         private readonly IGameService sut;
 
         [Theory, RecursionOmitAutoData]

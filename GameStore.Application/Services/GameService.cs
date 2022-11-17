@@ -1,4 +1,5 @@
-﻿using GameStore.Application.Models.Games.DTOs;
+﻿using GameStore.Application.External.MediaStorage;
+using GameStore.Application.Models.Games.DTOs;
 using GameStore.Application.Models.Games.Requests;
 using GameStore.Common.Filtering.Models;
 
@@ -6,7 +7,13 @@ namespace GameStore.Application.Services
 {
     public class GameService : BaseService, IGameService
     {
-        public GameService(IUnitOfWork uof, IMapper mapper) : base(uof, mapper) { }
+        public GameService(IUnitOfWork uof, IMapper mapper, IExternalMediaStorage mediaStorage) 
+            : base(uof, mapper) 
+        {
+            this.mediaStorage = mediaStorage;
+        }
+
+        private readonly IExternalMediaStorage mediaStorage;
 
         public async Task<GameDTO> AddAsync(SetGameDetailsRequest request)
         {
@@ -89,6 +96,19 @@ namespace GameStore.Application.Services
 
                 game.Genres.Add(genre);
             }
+        }
+
+        public async Task UpdateImageAsync(Guid id, Stream image, string name)
+        {
+            var game = await uof.Games.GetByIdAsync(id);
+            
+            if (game is null) throw new NotFoundException(nameof(game), id);
+
+            var imageUrl = await mediaStorage.UploadImageAsync(image, name, FolderNames.Games);
+            game.ImageUrl = imageUrl;
+
+            uof.Games.Update(game);
+            await uof.SaveChangesAsync();
         }
     }
 }

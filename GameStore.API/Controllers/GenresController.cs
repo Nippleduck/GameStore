@@ -34,7 +34,7 @@ namespace GameStore.API.Controllers
         {
             var result = await genreService.AddAsync(request);
 
-            return CreatedAtAction(nameof(request), result);
+            return CreatedAtAction(nameof(GetById), result);
         }
     }
 }

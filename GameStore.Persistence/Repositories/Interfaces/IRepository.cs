@@ -9,7 +9,7 @@ namespace GameStore.Persistence.Repositories.Interfaces
         Task<TEntity?> GetByIdAsync(TId id);
         Task<bool> DeleteByIdAsync(TId id);
         Task AddAsync(TEntity entity);
-        void UpdateAsync(TEntity entity);
+        void Update(TEntity entity);
     }
 
     public interface IGuidRepository<TEntity> : IRepository<TEntity, Guid> 

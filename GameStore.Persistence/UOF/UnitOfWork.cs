@@ -2,7 +2,7 @@
 using GameStore.Persistence.Repositories;
 using GameStore.Persistence.Repositories.Interfaces;
 
-namespace GameStore.Persistence.UnitOfWork
+namespace GameStore.Persistence.UOF
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -16,6 +16,6 @@ namespace GameStore.Persistence.UnitOfWork
         public IGameRepository Games => games ??= new GameRepository(context);
         public IGenreRepository Genres => genres ??= new GenreRepository(context);
 
-        public async Task SaveChanges() => await context.SaveChangesAsync();
+        public async Task SaveChangesAsync() => await context.SaveChangesAsync();
     }
 }

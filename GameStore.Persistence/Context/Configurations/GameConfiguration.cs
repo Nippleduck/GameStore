@@ -36,6 +36,10 @@ namespace GameStore.Persistence.Context.Configurations
                         .HasConstraintName("FK_GamesToGenres_Games_GameId")
                         .OnDelete(DeleteBehavior.ClientCascade)
                 );
+
+            builder
+                .Property(p => p.ImageUrl)
+                .HasMaxLength(200);
         }
     }
 }

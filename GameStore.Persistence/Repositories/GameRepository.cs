@@ -1,6 +1,9 @@
 ﻿using GameStore.Persistence.Repositories.Interfaces;
+using GameStore.Persistence.QueryFilters;
 using GameStore.Persistence.Context;
+using GameStore.Common.Filtering.Models;
 using GameStore.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Persistence.Repositories
 {
@@ -8,19 +11,38 @@ namespace GameStore.Persistence.Repositories
     {
         public GameRepository(ApplicationDbContext context) : base(context) { }
 
-        public Task<IEnumerable<Game>> GetAllByGenreId(Guid genreId)
+        public async Task<IEnumerable<Game>> GetAllByGenreIdAsync(Guid genreId)
         {
-            throw new NotImplementedException();
+            return await Entities
+                .AsNoTracking()
+                .Include(game => game.Genres)
+                .Where(game => game.Genres.Any(genre => genre.Id == genreId))
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<Game>> GetAllWithDetails()
+        public async Task<IEnumerable<Game>> GetAllWithDetailsAsync()
         {
-            throw new NotImplementedException();
+            return await Entities
+                .AsNoTracking()
+                .Include(game => game.Genres)
+                .ToListAsync();
         }
 
-        public Task<Game?> GetByIdWithDetails(Guid id)
+        public async Task<IEnumerable<Game>> GetAllWithFilterAsync(GameFilter filter)
         {
-            throw new NotImplementedException();
+            return await Entities
+                .AsNoTracking()
+                .Include(game => game.Genres)
+                .Filter(filter)
+                .ToListAsync();
+        }
+
+        public async Task<Game?> GetByIdWithDetailsAsync(Guid id)
+        {
+            return await Entities
+                .AsNoTracking()
+                .Include(game => game.Genres)
+                .FirstOrDefaultAsync(game => game.Id == id);
         }
     }
 }

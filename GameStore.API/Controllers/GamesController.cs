@@ -29,7 +29,7 @@ namespace GameStore.API.Controllers
         {
             var result = await gameService.AddAsync(request);
 
-            return CreatedAtAction(nameof(GetById), result);
+            return CreatedAtAction(nameof(GetById), new { result.Id }, result);
         }
 
         [HttpGet("{id}")]
